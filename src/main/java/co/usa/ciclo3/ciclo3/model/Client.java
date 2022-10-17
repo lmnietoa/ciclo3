@@ -23,7 +23,7 @@ public class Client implements Serializable {
     @JsonIgnoreProperties("client")
     public List<Reservation> reservations;
 
-    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "client")
+    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "clients")
     @JsonIgnoreProperties("client")
     public List<Message> messages;
 
