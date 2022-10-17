@@ -23,11 +23,11 @@ public class Machine implements Serializable {
     @JsonIgnoreProperties("machines")
     private Category category;
 
-    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "machine")
+    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "machines")
     @JsonIgnoreProperties({"machines","messages"})
     public List<Reservation> reservations;
 
-    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "machine")
+    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "machines")
     @JsonIgnoreProperties({"machines","clients"})
     public List<Message> messages;
 
