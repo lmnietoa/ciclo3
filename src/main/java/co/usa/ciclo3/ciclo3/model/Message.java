@@ -17,12 +17,12 @@ public class Message implements Serializable {
 
     @ManyToOne
     @JoinColumn(name="MachineId")
-    @JsonIgnoreProperties({"menssage","reservation"})
-    private Machine machine;
+    @JsonIgnoreProperties({"menssages","reservations"})
+    private Machine machines;
 
     @ManyToOne
     @JoinColumn(name="ClientId")
-    @JsonIgnoreProperties({"menssage","reservation"})
+    @JsonIgnoreProperties({"menssages","reservations"})
     private Client client;
 
     public Integer getIdMessage() {
@@ -41,12 +41,12 @@ public class Message implements Serializable {
         this.messageText = messageText;
     }
 
-    public Machine getMachine() {
-        return machine;
+    public Machine getMachines() {
+        return machines;
     }
 
-    public void setMachine(Machine machine) {
-        this.machine = machine;
+    public void setMachines(Machine machines) {
+        this.machines = machines;
     }
 
     public Client getClient() {

@@ -20,10 +20,10 @@ public class Reservation implements Serializable {
 
     @ManyToOne
     @JoinColumn(name="MachineId")
-    @JsonIgnoreProperties("reservation")
+    @JsonIgnoreProperties("reservations")
     private Machine machine;
     @ManyToOne
-    @JsonIgnoreProperties({"reservation", "message"})
+    @JsonIgnoreProperties({"reservations", "messages"})
     private Client client;
 
     @OneToOne
