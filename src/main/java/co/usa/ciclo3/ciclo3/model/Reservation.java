@@ -18,16 +18,17 @@ public class Reservation implements Serializable {
     private Date devolutionDate;
     private String status = "created";
 
-    @OneToOne
-    @JsonIgnoreProperties("reservations")
-    private Score scores;
     @ManyToOne
     @JoinColumn(name="MachineId")
     @JsonIgnoreProperties("reservations")
-    private Machine machines;
+    private Machine machine;
     @ManyToOne
     @JsonIgnoreProperties({"reservations", "messages"})
     private Client client;
+
+    @OneToOne
+    @JsonIgnoreProperties("reservations")
+    private Score score;
 
     public Integer getIdReservation() {
         return idReservation;
@@ -61,20 +62,12 @@ public class Reservation implements Serializable {
         this.status = status;
     }
 
-    public Score getScores() {
-        return scores;
+    public Machine getMachine() {
+        return machine;
     }
 
-    public void setScores(Score scores) {
-        this.scores = scores;
-    }
-
-    public Machine getMachines() {
-        return machines;
-    }
-
-    public void setMachines(Machine machines) {
-        this.machines = machines;
+    public void setMachine(Machine machine) {
+        this.machine = machine;
     }
 
     public Client getClient() {
@@ -83,5 +76,13 @@ public class Reservation implements Serializable {
 
     public void setClient(Client client) {
         this.client = client;
+    }
+
+    public Score getScore() {
+        return score;
+    }
+
+    public void setScore(Score score) {
+        this.score = score;
     }
 }

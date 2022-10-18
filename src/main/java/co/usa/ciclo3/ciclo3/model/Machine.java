@@ -13,8 +13,8 @@ public class Machine implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String brand;
     private String name;
+    private String brand;
     private Integer year;
     private String description;
 
@@ -24,12 +24,13 @@ public class Machine implements Serializable {
     private Category category;
 
     @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "machines")
+    @JsonIgnoreProperties({"machines","clients"})
+    public List<Message> messages;
+
+    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "machines")
     @JsonIgnoreProperties({"machines","messages"})
     public List<Reservation> reservations;
 
-    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "machines")
-    @JsonIgnoreProperties({"machines","clients"})
-    public List<Message> messages;
 
     public Integer getId() {
         return id;
@@ -39,20 +40,20 @@ public class Machine implements Serializable {
         this.id = id;
     }
 
-    public String getBrand() {
-        return brand;
-    }
-
-    public void setBrand(String brand) {
-        this.brand = brand;
-    }
-
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
     }
 
     public Integer getYear() {
